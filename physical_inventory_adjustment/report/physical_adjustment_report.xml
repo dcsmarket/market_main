@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_report_adjustment" model="ir.actions.report">
+        <field name="name">Adjustment Report</field>
+        <field name="model">physical.inventory.adjustment</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">physical_inventory_adjustment.report_physical_adjustment</field>
+        <field name="report_file">physical_inventory_adjustment.report_physical_adjustment</field>
+        <field name="binding_model_id" ref="physical_inventory_adjustment.model_physical_inventory_adjustment"/>
+        <field name="binding_type">report</field>
+    </record>
+    <template id="report_physical_adjustment">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <h3 style="text-align: center; font-family: Arial, Helvetica, sans-serif;">INVENTORY ADJUSTMENT
+                    </h3>
+                    <div class="page" style="font-size: 14px; font-family: Arial, Helvetica, sans-serif;">
+                        <div class="oe_structure"/>
+                        <div class="row mt-2">
+                            <div class="col-6">
+                                <strong>Location:</strong>
+                                <span t-esc="o.location_id.name"/>
+                            </div>
+                            <div class="col-6" style="text-align: right;">
+                                <strong>Created By :</strong>
+                                <span t-esc="o.created_by.name"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <strong>Location Barcode:</strong>
+                                <span t-esc="o.location_barcode"/>
+                            </div>
+                            <div class="col-6" style="text-align: right;">
+                                <strong>Approved By :</strong>
+                                <span t-esc="o.approved_by.name"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <strong>Date:</strong>
+                                <span t-esc="o.date"/>
+                            </div>
+                        </div>
+                        <table class="table table-sm mt-4"
+                               style="border-collapse: collapse; width: 100%; font-size : 14px;">
+                            <thead style="background-color: #137EC6;">
+                                <tr>
+                                    <th name="th_product"
+                                        style="text-align: center; border: 1px solid black; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                        <strong style="color: #ffffff;">Product</strong>
+                                    </th>
+                                    <th name="th_quantity" style="text-align: center; border: 1px solid black;">
+                                        <strong style="color: #ffffff;">Quantity</strong>
+                                    </th>
+                                    <th name="th_quantity_on_hand" style="text-align: center; border: 1px solid black;">
+                                        <strong style="color: #ffffff;">
+                                            <nobr>Qty On Hand</nobr>
+                                        </strong>
+                                    </th>
+                                    <th name="th_barcode" class="text-center"
+                                        style="border: 1px solid black;">
+                                        <strong style="color: #ffffff;">Barcode</strong>
+                                    </th>
+                                    <th name="th_reference" class="text-center" style="border: 1px solid black;">
+                                        <strong style="color: #ffffff;">Reference</strong>
+                                    </th>
+                                    <th name="th_uom" class="text-center" style="border: 1px solid black;">
+                                        <strong style="color: #ffffff;">UOM</strong>
+                                    </th>
+                                    <th name="th_repetitive" class="text-center" style="border: 1px solid black;">
+                                        <strong style="color: #ffffff;">Repetitive</strong>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="o.line_ids" t-as="record">
+                                    <tr>
+                                        <td name="td_product"
+                                            style="text-align: center; border: 1px solid black; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                            <span t-esc="record.product_id.name"/>
+                                        </td>
+                                        <td name="td_quantity" style="text-align: center; border: 1px solid black;">
+                                            <span t-esc="record.qty" t-options="{'widget': 'float', 'precision': 2}"/>
+                                        </td>
+                                        <td name="td_quantity_on_hand"
+                                            style="text-align: center; border: 1px solid black;">
+                                            <span t-esc="record.qty_on_hand"
+                                                  t-options="{'widget': 'float', 'precision': 2}"/>
+                                        </td>
+                                        <td name="td_barcode" class="text-center"
+                                            style="text-align: center; border: 1px solid black;">
+                                            <span t-esc="record.barcode"/>
+                                        </td>
+                                        <td name="td_reference" class="text-center"
+                                            style="text-align: center; border: 1px solid black;">
+                                            <span t-esc="record.reference"/>
+                                        </td>
+                                        <td name="td_uom" class="text-center"
+                                            style="text-align: center; border: 1px solid black;">
+                                            <span t-esc="record.uom_id.name"/>
+                                        </td>
+                                        <td name="td_repetitive" style="text-align: center; border: 1px solid black;">
+                                            <span t-esc="record.repetitive_count"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+</odoo>

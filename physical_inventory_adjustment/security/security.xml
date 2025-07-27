@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Create Module Category -->
+        <record id="module_category_inventory_adjustment" model="ir.module.category">
+            <field name="name">Inventory Adjustment</field>
+            <field name="description">Manage Inventory Adjustment Permissions</field>
+            <field name="sequence">50</field>
+        </record>
+
+        <!-- Inventory Adjustment User Group -->
+        <record id="group_inventory_adjustment_user" model="res.groups">
+            <field name="name">Inventory Adjustment User</field>
+            <field name="category_id" ref="module_category_inventory_adjustment"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <!-- Inventory Adjustment Manager Group -->
+        <record id="group_inventory_adjustment_manager" model="res.groups">
+            <field name="name">Inventory Adjustment Manager</field>
+            <field name="category_id" ref="module_category_inventory_adjustment"/>
+            <field name="implied_ids" eval="[(4, ref('group_inventory_adjustment_user'))]"/>
+        </record>
+
+    </data>
+</odoo>

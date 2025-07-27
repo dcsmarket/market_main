@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree View -->
+    <record id="view_pos_order_tracking_tree" model="ir.ui.view">
+        <field name="name">pos.order.tracking.tree</field>
+        <field name="model">pos.order.tracking</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="order_ref"/>
+                <field name="session_id"/>
+                <field name="date"/>
+                <field name="receipt_number"/>
+<!--                <field name="customer_id"/>-->
+                <field name="quantity"/>
+                <field name="amount"/>
+                <field name="price"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+<!--    <record id="view_pos_order_tracking_form" model="ir.ui.view">-->
+<!--        <field name="name">pos.order.tracking.form</field>-->
+<!--        <field name="model">pos.order.tracking</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <form>-->
+<!--                <sheet>-->
+<!--                    <group>-->
+<!--                        <group>-->
+<!--                            <field name="order_ref"/>-->
+<!--                            <field name="session_id"/>-->
+<!--                            <field name="date"/>-->
+<!--                            <field name="receipt_number"/>-->
+<!--                        </group>-->
+<!--                        <group>-->
+<!--                            <field name="customer_id"/>-->
+<!--                            <field name="quantity"/>-->
+<!--                            <field name="amount"/>-->
+<!--                            <field name="price"/>-->
+<!--                        </group>-->
+<!--                    </group>-->
+<!--                </sheet>-->
+<!--            </form>-->
+<!--        </field>-->
+<!--    </record>-->
+
+    <!-- Action -->
+    <record id="action_pos_order_tracking" model="ir.actions.act_window">
+        <field name="name">POS Order</field>
+        <field name="res_model">pos.order.tracking</field>
+        <field name="view_mode">tree</field>
+    </record>
+        <menuitem
+                id="menu_pod_order_tracking_root"
+                name="POS Order Tracking"
+                sequence="10"
+                groups="pos_order_tracking.group_pos_order_tracking"
+                web_icon="pos_order_tracking,static/description/icon.png"/>
+
+    <menuitem
+            id="menu_pos_order_tracking"
+            name="POS Order"
+            parent="pos_order_tracking.menu_pod_order_tracking_root"
+            action="action_pos_order_tracking"
+            groups="pos_order_tracking.group_pos_order_tracking"
+            sequence="10"/>
+</odoo>

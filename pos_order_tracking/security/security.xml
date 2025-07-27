@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="group_pos_order_tracking" model="res.groups">
+        <field name="name">Pos Order Tracking</field>
+    </record>
+</odoo>
