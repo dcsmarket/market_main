@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+    <t t-name="custom.CashMovePopup" owl="1" t-inherit="point_of_sale.CashMovePopup" t-inherit-mode="extension">
+        <!-- Hide the Cash In button -->
+        <xpath expr="//span[contains(text(), 'Cash In')]" position="replace">
+        </xpath>
+    </t>
+</templates>
