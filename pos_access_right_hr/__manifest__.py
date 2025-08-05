@@ -43,6 +43,7 @@
             'pos_access_right_hr/static/src/xml/ActionpadWidgetAccessRight.xml',
             'pos_access_right_hr/static/src/xml/CashMovePopup.xml',
             'pos_access_right_hr/static/src/js/ProductScreenAccessRight.js'
+            'pos_access_right_hr/static/src/js/cashmovebutton.js'
         ],
     },
     'images': ['static/description/banner.png'],
