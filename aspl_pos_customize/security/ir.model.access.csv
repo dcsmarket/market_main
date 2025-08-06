@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+aspl_pos_customize.access_update_pos_payment_wizard,access_update_pos_payment_wizard,aspl_pos_customize.model_update_pos_payment_wizard,base.group_user,1,1,1,0
+
+
+
