@@ -23,7 +23,7 @@ class PosOrderInherit(models.Model):
 
         query = """
             UPDATE pos_order
-            SET partner_id = COALESCE(partner_id, 5401)
+            SET partner_id = COALESCE(partner_id, 5406)
             WHERE id IN (
                 SELECT id 
                 FROM pos_order 
